@@ -29,3 +29,4 @@
 <script type="text/javascript" src="js/sign.js"></script> <!-- For Modal -->
 <script type="text/javascript" src="js/signUpForm.js"></script> <!-- SignUp -->
 <script type="text/javascript" src="js/signInForm.js"></script> <!-- SignIn -->
+<script type="text/javascript" src="js/navbar.js"></script>

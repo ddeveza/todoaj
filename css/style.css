@@ -8,12 +8,11 @@
     display: flex;
     flex-direction: column;
     text-align: center;
-    background: rgb(151, 149, 165);
 }
 
 .header{
     padding-top: 20px;
-    color: rgb(255, 255, 255);
+    color: rgb(54, 54, 54);
     font-size: 20px;
     margin: auto;
     line-height: 50px;
@@ -39,8 +38,8 @@
     border-radius: 12px;
 }
 .teams img{
-    width: 200px;
-    height: 200px;
+    width: 100px;
+    height: 100px;
 }
 .name {
     padding: 12px;
@@ -70,5 +69,12 @@
     transform: scale(1.5);
 }
 .social-links a li{
-    color: #444;
+    color: rgb(255, 0, 0);
+}
+a{
+    color: #4542ec;
+}
+.navbar-expand-lg .navbar-nav .nav-link{
+    padding-right: 3rem;
+    padding-left: 0.5rem;
 }
