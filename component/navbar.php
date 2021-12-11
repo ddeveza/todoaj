@@ -11,7 +11,7 @@
                     <a class="nav-link" aria-current="page" href="#">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#dennis">About Us</a>
+                    <a class="nav-link" href="#team">About Us</a>
                 </li>
                 <li class="nav-item" id="signInModal">
                     <a class="nav-link" href="#">Login</a>

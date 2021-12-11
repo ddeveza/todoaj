@@ -11,6 +11,7 @@ session_start();
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -18,20 +19,25 @@ session_start();
     <title>Todo App</title>
     <?php include_once 'plugins/plugins.php'?>
 </head>
+
 <body>
-  <?php include_once 'component/navbarLogged.php'?>
-   
+    <?php include_once 'component/navbarLogged.php'?>
+    <?php include_once 'component/Team.php'?>
 </body>
+
 </html>
 
 <script>
-    $('#logout').click(function(){
-        
-        $.ajax({
-          url: "php/LogOut.php",
-          success:function(data){
-             window.location = 'index.php';
-          }
-        });
+$('#logout').click(function() {
+
+    $.ajax({
+        url: "php/LogOut.php",
+        success: function(data) {
+            window.location = 'index.php';
+        }
     });
+}); <
+script type = "text/javascript"
+src = "js/navbar.js" >
+</script>
 </script>
