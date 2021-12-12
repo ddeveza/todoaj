@@ -6,6 +6,13 @@ session_start();
         header("Location: index.php");
     }
 
+    
+    $name = $_SESSION['user'];
+    
+
+
+    
+
 ?>
 
 
@@ -22,6 +29,13 @@ session_start();
 
 <body>
     <?php include_once 'component/navbarLogged.php'?>
+    <br>
+    <br>
+    <br>
+    <h1>Welcome ,<?php echo $name;?></h1>
+    <div>
+        <?php include_once 'component/Table.php'?>
+    </div>
     <?php include_once 'component/Team.php'?>
 </body>
 
@@ -36,8 +50,35 @@ $('#logout').click(function() {
             window.location = 'index.php';
         }
     });
-}); <
-script type = "text/javascript"
-src = "js/navbar.js" >
+});
 </script>
+
+
+<script>
+$(document).ready(function() {
+    var myTable = $('#taskTable').DataTable({
+        "processing": true,
+        'ajax': {
+            "url": "/todog1/php/fetchdatatable.php",
+
+        },
+    });
+    $('#openTaskModal').click(function() {
+        $('#taskModal').modal('show');
+    })
+    $('#closeTaskModal').click(function() {
+        $('#taskModal').modal('hide');
+    })
+
+});
+</script>
+<script type="text/javascript" src="js/addtask.js"></script> <!-- addtask -->
+
+
+<script>
+$(document).on('click', '.view', function() {
+    alert('hello');
+    alert($(this).attr('id'));
+
+});
 </script>

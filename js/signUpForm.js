@@ -12,35 +12,30 @@ $(document).ready(function () {
         type: "post",
         url: "php/SignUp.php",
         data: {
-          fname:fname,
-          lname:lname,
-          email:email,
-          pass:pass
+          fname: fname,
+          lname: lname,
+          email: email,
+          pass: pass,
         },
         success: function (data) {
-        
-            if(data ) {
-                
-                swal("Successfully Registered!", "You may now create task", "success").then(res=>{
-                   
-                   if (res)  {
-                     $("#firstname").val('');
-                     $("#lastname").val('');
-                     $("#email").val('');
-                     $("#password").val('');
-                     $("#exampleModalLabel")[0].innerText = "Login into your account";
-                     $("#loginbutton")[0].innerText = "Sign In";
-                     $("#login").show();
-                      $("#register").hide();
-                     
-                   }
-                });
-              
-
-                
-            }else {
-              swal("Missing credential!", "Note: You must complete all input fields", "error");
-            }
+          if (data == "User Created") {
+            swal("Successfully Registered!", "You may now create task", "success").then((res) => {
+              if (res) {
+                $("#firstname").val("");
+                $("#lastname").val("");
+                $("#email").val("");
+                $("#password").val("");
+                $("#exampleModalLabel")[0].innerText = "Login into your account";
+                $("#loginbutton")[0].innerText = "Sign In";
+                $("#login").show();
+                $("#register").hide();
+              }
+            });
+          } else if (data == "missing data") {
+            swal("Missing credential!", "Note: You must complete all input fields", "error");
+          } else if (data == "User existing") {
+            swal("Email already exist!", "Note: Please try to use another  email", "error");
+          }
         },
       });
     }
