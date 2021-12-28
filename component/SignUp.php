@@ -1,6 +1,4 @@
 <div id='register'>
-
-
     <form id='signUpForm'>
         <div class=" mb-3">
             <label for="exampleInputEmail1" class="form-label">First name</label>

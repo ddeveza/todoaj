@@ -55,8 +55,9 @@ $('#logout').click(function() {
 
 
 <script>
+var myTable;
 $(document).ready(function() {
-    var myTable = $('#taskTable').DataTable({
+    myTable = $('#taskTable').DataTable({
         "processing": true,
         'ajax': {
             "url": "/todog1/php/fetchdatatable.php",

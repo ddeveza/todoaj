@@ -15,9 +15,19 @@ $(document).ready(function () {
         if (data == "task created") {
           swal("Missing credential!", "Note: You must complete all input fields", "success").then((res) => {
             if (res) {
-              window.location = "http://localhost:81/todog1/Home.php";
+              //window.location = "http://localhost:81/todog1/Home.php";
+              $('#taskTable').DataTable().ajax.reload(); // ito para magrealod ung table
+             
+               
             }
+
           });
+
+          $('#taskModal').modal('hide');
+          $("#taskname").val('');
+          $("#duedate").val('');
+         
+      
         } else if (data == "error") swal("Missing credential!", "Note: You must complete all input fields", "error");
         else if (data == "missing data") swal("Missing credential!", "Note: You must complete all input fields", "warning");
       },
