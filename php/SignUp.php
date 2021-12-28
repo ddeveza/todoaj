@@ -1,9 +1,14 @@
 <?php 
   include_once 'model/model.php';
 
-  $taskname=$_POST['taskname'];
-  $duedate=$_POST['duedate'];
+  //$taskname=$_POST['taskname'];
+  //$duedate=$_POST['duedate'];
+  $fname = $_POST['fname'];
+  $lname = $_POST['lname'];
+  $email = $_POST['email'];
+  $pass = $_POST['pass'];
 
+  
   if ($fname!='' && $lname!='' && $email!='' && $pass!=''){
 
     $sqlCheckEmail = "SELECT * FROM users WHERE (email=?)";

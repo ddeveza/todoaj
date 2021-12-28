@@ -35,6 +35,8 @@ $(document).ready(function () {
             swal("Missing credential!", "Note: You must complete all input fields", "error");
           } else if (data == "User existing") {
             swal("Email already exist!", "Note: Please try to use another  email", "error");
+          }else{
+            console.log(data);
           }
         },
       });
