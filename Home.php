@@ -93,6 +93,7 @@ $(document).on('click', '.editBtn', function(event) {
             $('#_taskname').val(forEdit[0].task);
             $('#_duedate').val(forEdit[0].duedate);
             $('#editTaskModal').modal('show');
+
         }
     });
 
@@ -105,6 +106,9 @@ $(document).on('click', '#saveEditModal', function() {
     var id = $('#id').val();
     var task = $('#_taskname').val();
     var duedate = $('#_duedate').val();
+    var checkbox = $('#flexCheckChecked').prop("checked");
+
+
 
     $.ajax({
         url: "php/updateTask.php",
@@ -112,12 +116,13 @@ $(document).on('click', '#saveEditModal', function() {
         data: {
             id: id,
             task: task,
-            duedate: duedate
+            duedate: duedate,
+            checkbox: checkbox
         },
         success: function(data) {
             console.log(data);
             if (data) {
-                swal("Successfully Save!", "Note: You must complete all input fields", "success")
+                swal("Successfully Saved!", "Your task has been updated.", "success")
                     .then((res) => {
                         if (res) {
                             $('#taskTable').DataTable().ajax.reload();
@@ -133,6 +138,40 @@ $(document).on('click', '#saveEditModal', function() {
             } else swal("Missing credential!", "Note: You must complete all input fields", "error");
 
         },
-    })
-})
+    });
+});
+
+$(document).on('click', '.deleteBtn', function() {
+    $('#deleteTask').modal('show');
+});
+$(document).on('click', '#closeDelete', function() {
+    $('#deleteTask').modal('hide');
+});
+$(document).on('click', '#confirmDelete', function() {
+    var id = $('.deleteBtn').attr('id');
+    /* console.log(id); */
+    $.ajax({
+        url: "php/deleteTask.php",
+        type: "post",
+        data: {
+            id: id,
+        },
+        success: function(data) {
+            if (data) {
+
+
+                swal("Successfully Deleted!", "Note: You must complete all input fields", "success")
+                    .then((res) => {
+                        if (res) {
+                            $('#taskTable').DataTable().ajax.reload();
+                        }
+
+                    });
+
+                $('#deleteTask').modal('hide');
+            }
+
+        },
+    });
+});
 </script>

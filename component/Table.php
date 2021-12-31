@@ -61,6 +61,11 @@
                     <input type="date" class="form-control" placeholder="Username" aria-label="Username"
                         aria-describedby="basic-addon1" id="_duedate">
                 </div>
+
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+                <label class="form-check-label" for="flexCheckChecked">
+                    Check if completed?
+                </label>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" id='closeEditModal'>Close</button>
@@ -69,9 +74,25 @@
         </div>
     </div>
 </div>
+<!-- delete task modal-->
+<div class="modal fade" id="deleteTask" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Delete task</h5>
 
-
-
+            </div>
+            <div class="modal-body">
+                <p>Are you sure you want to delete this task?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" id='closeDelete'>Close</button>
+                <button type="button" class="btn btn-primary" id='confirmDelete'>Confirm</button>
+            </div>
+        </div>
+    </div>
+</div>
 
 <table id='taskTable' class='display' style="border-style:ridge;">
     <thead>

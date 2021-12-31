@@ -20,7 +20,7 @@ include_once 'model/model.php';
        
 
         if ($value['status'] != 'completed'){
-            $secs = strtotime( $value['duedate']) - strtotime($value['datecreated']) ;// == <seconds between the two times>
+            $secs = strtotime( $value['duedate']) - strtotime(date("Y/m/d")) ;// == <seconds between the two times>
             $days = $secs / 86400;
         
             if ($days < 0){
