@@ -2,7 +2,7 @@ $(document).ready(function () {
   $("#saveTaskModal").click(function () {
     var taskname = $("#taskname").val();
     var duedate = $("#duedate").val();
-    console.log("im clicked add");
+    /* console.log("im clicked add"); */
     $.ajax({
       type: "post",
       url: "php/addtask.php",
@@ -16,9 +16,7 @@ $(document).ready(function () {
           swal("Missing credential!", "Note: You must complete all input fields", "success").then((res) => {
             if (res) {
               //window.location = "http://localhost:81/todog1/Home.php";
-              $('#taskTable').DataTable().ajax.reload(); // ito para magrealod ung table
-             
-               
+              $('#taskTable').DataTable().ajax.reload(); // ito para magrealod ung table   
             }
 
           });

@@ -16,15 +16,39 @@ include_once 'model/model.php';
     $rows = array('data' =>  array() );
 
     foreach($user as $value) {
+
+       
+
+        if ($value['status'] != 'completed'){
+            $secs = strtotime( $value['duedate']) - strtotime($value['datecreated']) ;// == <seconds between the two times>
+            $days = $secs / 86400;
+        
+            if ($days < 0){
+                $status1 = "past due date";
+            }else{
+                $status1 = "ongoing";
+            }
+            
+        }else {
+            $status1 = "completed";
+        }
+      
+         ///update status
+         $sqlStatus = "UPDATE tasks SET status=? WHERE id=?";
+         $stmtStatus = $db->prepare($sqlStatus);
+         $stmtStatus->execute([$status1, $value['id']]); 
+
         $ID = $value['id'];
-        $action = '<button type="button" class="btn btn btn-warning view" id="'.$ID.'">EDIT</button>'.'<button type="button" class="btn btn btn-danger delete" id="'.$ID.'">DELETE</button>';
+
+
+        $action = '<button type="button" class="btn btn btn-warning editBtn" id="'.$ID.'">EDIT</button>'.'<button type="button" class="btn btn btn-danger deleteBtn" id="'.$ID.'">DELETE</button>';
         $rows['data'][] = array(
             $value['id'],
             $value['task'],
             $value['datecreated'],
             $value['duedate'],
             $value['datecompleted'],
-            $value['status'],
+            $status1,
             $action
 
         );

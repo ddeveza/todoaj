@@ -77,9 +77,62 @@ $(document).ready(function() {
 
 
 <script>
-$(document).on('click', '.view', function() {
-    alert('hello');
-    alert($(this).attr('id'));
+$(document).on('click', '.editBtn', function(event) {
+    var id = $(this).attr('id');
+    $.ajax({
+        url: "php/getTask.php",
+        type: "post",
+        data: {
+            id: id
+        },
+        success: function(data) {
+            //console.log(JSON.parse(data));
+            var forEdit = JSON.parse(data);
+            //console.log(forEdit[0]);
+            $('#id').val(forEdit[0].id);
+            $('#_taskname').val(forEdit[0].task);
+            $('#_duedate').val(forEdit[0].duedate);
+            $('#editTaskModal').modal('show');
+        }
+    });
 
+    $('#closeEditModal').click(function() {
+        $('#editTaskModal').modal('hide');
+    });
 });
+
+$(document).on('click', '#saveEditModal', function() {
+    var id = $('#id').val();
+    var task = $('#_taskname').val();
+    var duedate = $('#_duedate').val();
+
+    $.ajax({
+        url: "php/updateTask.php",
+        type: "post",
+        data: {
+            id: id,
+            task: task,
+            duedate: duedate
+        },
+        success: function(data) {
+            console.log(data);
+            if (data) {
+                swal("Successfully Save!", "Note: You must complete all input fields", "success")
+                    .then((res) => {
+                        if (res) {
+                            $('#taskTable').DataTable().ajax.reload();
+                        }
+
+                    });
+
+                $('#editTaskModal').modal('hide');
+                /*  $("#taskname").val('');
+                 $("#duedate").val(''); */
+
+
+            } else swal("Missing credential!", "Note: You must complete all input fields", "error");
+
+        },
+    })
+})
 </script>
