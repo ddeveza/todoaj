@@ -36,6 +36,9 @@ session_start();
     <div>
         <?php include_once 'component/Table.php'?>
     </div>
+    <!-- Added Chart JS  -->
+    <?php include_once 'chart/chart.php'?>
+    <!-- End of  Chart JS  -->
     <?php include_once 'component/Team.php'?>
 </body>
 
