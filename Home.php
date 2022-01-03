@@ -37,7 +37,9 @@ session_start();
         <?php include_once 'component/Table.php'?>
     </div>
     <!-- Added Chart JS  -->
-    <?php include_once 'chart/chart.php'?>
+    <div id='testing'>
+        <?php include_once 'chart/chart.php'?>
+    </div>
     <!-- End of  Chart JS  -->
     <?php include_once 'component/Team.php'?>
 </body>
@@ -131,7 +133,7 @@ $(document).on('click', '#saveEditModal', function() {
 
                             $('#taskTable').DataTable().ajax.reload();
 
-
+                            reload();
                         }
 
                     });
@@ -170,6 +172,7 @@ $(document).on('click', '#confirmDelete', function() {
                     .then((res) => {
                         if (res) {
                             $('#taskTable').DataTable().ajax.reload();
+                            reload();
                         }
 
                     });

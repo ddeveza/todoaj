@@ -17,6 +17,7 @@ $(document).ready(function () {
             if (res) {
               //window.location = "http://localhost:81/todog1/Home.php";
               $('#taskTable').DataTable().ajax.reload(); // ito para magrealod ung table   
+              reload();
             }
 
           });
