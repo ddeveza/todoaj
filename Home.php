@@ -128,7 +128,10 @@ $(document).on('click', '#saveEditModal', function() {
                 swal("Successfully Saved!", "Your task has been updated.", "success")
                     .then((res) => {
                         if (res) {
+
                             $('#taskTable').DataTable().ajax.reload();
+
+
                         }
 
                     });

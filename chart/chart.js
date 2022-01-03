@@ -10,19 +10,20 @@ $(document).ready(function(){
     $.ajax({
         type: "get",
         url: "chart/chartdata.php",
-        success: function (data) {
+        success: function (jsondata) {
+            var response = JSON.parse(jsondata);
             const data = {
                 labels: [
-                  'Red',
-                  'Blue',
-                  'Yellow'
+                  'Past Due',
+                  'Completed',
+                  'Ongoing'
                 ],
                 datasets: [{
                   label: 'My First Dataset',
-                  data: [300, 50, 100],
+                  data: [response.pastdue,response.completed, response.ongoing],
                   backgroundColor: [
                     'rgb(255, 99, 132)',
-                    'rgb(54, 162, 235)',
+                    'rgb(0, 204, 102)',
                     'rgb(255, 205, 86)'
                   ],
                   hoverOffset: 4
