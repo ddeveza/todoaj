@@ -2,12 +2,12 @@
  include_once '../php/model/model.php';
  session_start();
 
- //$email = $_SESSION['emailuser'];
+ $email = $_SESSION['emailuser'];
  $ongoing = 0;
  $completed = 0;
  $pastdue = 0;
 
- $email = "ddeveza@ymail.com";
+ 
  $sql = "SELECT * FROM tasks WHERE (email=?)";
  $stmtcheck = $db->prepare($sql);
  $result = $stmtcheck->execute([$email]);

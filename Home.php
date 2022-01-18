@@ -66,6 +66,10 @@ $(document).ready(function() {
         "processing": true,
         'ajax': {
             "url": "/todog1/php/fetchdatatable.php",
+            "error": function(xhr, error, code) {
+                console.log('No Task Added Yet')
+                swal("No Task Available Yet!", "Note: Click Create for the new task", "info")
+            }
 
         },
     });
@@ -150,19 +154,22 @@ $(document).on('click', '#saveEditModal', function() {
 });
 
 $(document).on('click', '.deleteBtn', function() {
+    var id = $(this).attr('id');
+    $('#confirmDelete').addClass(id);
     $('#deleteTask').modal('show');
 });
 $(document).on('click', '#closeDelete', function() {
     $('#deleteTask').modal('hide');
 });
 $(document).on('click', '#confirmDelete', function() {
-    var id = $('.deleteBtn').attr('id');
-    /* console.log(id); */
+    var id = $('#confirmDelete').attr('class');
+    var splitClass = id.split(" ");
+    var getID = splitClass[splitClass.length - 1];
     $.ajax({
         url: "php/deleteTask.php",
         type: "post",
         data: {
-            id: id,
+            id: getID,
         },
         success: function(data) {
             if (data) {
